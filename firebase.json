@@ -5,6 +5,22 @@
       "firebase.json",
       "**/.*",
       "**/node_modules/**"
+    ],
+
+    "headers": [
+      {
+        "source": "**/*.pkg",
+        "headers": [
+          {
+            "key": "Content-Type",
+            "value": "application/octet-stream"
+          },
+          {
+            "key": "Content-Disposition",
+            "value": "attachment; filename=\"HighlightIT.pkg\""
+          }
+        ]
+      }
     ]
   }
 }
