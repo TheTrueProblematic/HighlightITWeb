@@ -44,9 +44,12 @@
             --dark-blue: #0c2846;
             --yellow: #f8cd16;
             --white: #ffffff;
+            --black: #000000;
             --footer-height-desktop: 60px;
             --footer-height-mobile: 110px; /* Adjusted slightly for potentially more margin */
             --footer-side-padding: 5vw; /* Increased responsive padding for side items */
+            --modal-backdrop-color: rgba(0, 0, 0, 0.6);
+            --modal-border-color: var(--black);
         }
 
         /* --- Loader Animation --- */
@@ -121,13 +124,23 @@
         .description {
             color: var(--white);
             font-size: 1.1em;
-            margin-bottom: 40px;
+            margin-bottom: 30px; /* Reduced margin slightly */
             max-width: 550px;
         }
 
-        /* --- Download Button --- */
-        .download-button {
-            display: inline-block;
+        /* --- Main Buttons Container --- */
+        .main-button-container {
+            display: flex;
+            flex-direction: column; /* Stack buttons vertically */
+            align-items: center; /* Center buttons horizontally */
+            gap: 15px; /* Space between the buttons */
+            width: 100%; /* Occupy container width for centering */
+            margin-top: 10px; /* Space above the button group */
+        }
+
+        /* --- General Button Styles --- */
+        .button { /* General button/link-as-button styling */
+            display: inline-block; /* Allows width/padding but acts like inline */
             background-color: var(--yellow);
             color: var(--dark-blue);
             padding: 15px 35px;
@@ -135,16 +148,129 @@
             font-weight: bold;
             text-decoration: none;
             border-radius: 30px;
-            transition: background-color 0.3s ease, transform 0.3s ease;
+            transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            border: none; /* Reset default button border */
+            text-align: center; /* Ensure text is centered */
+            max-width: 300px; /* Prevent buttons becoming too wide */
+            width: fit-content; /* Be only as wide as content + padding */
         }
 
-        .download-button:hover,
-        .download-button:focus {
+        .button:hover,
+        .button:focus {
             background-color: #eec40a;
             transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
             outline: none;
+            color: var(--dark-blue); /* Ensure text color remains on hover */
+            text-decoration: none; /* Ensure no underline on hover */
         }
+
+        /* Specific style for the direct download button if needed */
+        .button-direct-download {
+            /* Inherits .button */
+        }
+
+        /* --- Modal Styles --- */
+        .modal-backdrop {
+            position: fixed;
+            inset: 0;
+            background-color: var(--modal-backdrop-color);
+            z-index: 1000;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease-in-out;
+        }
+
+        .modal-container {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0.95); /* Start slightly smaller for pop effect */
+            background-color: var(--dark-blue);
+            color: var(--white);
+            padding: 40px 30px 30px 30px; /* More padding top for X */
+            border-radius: 15px;
+            border: 2px solid var(--modal-border-color);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+            z-index: 1001;
+            max-width: 90%;
+            width: 450px; /* Max width for modal */
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .modal-backdrop.visible,
+        .modal-container.visible {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        .modal-container.visible {
+            transform: translate(-50%, -50%) scale(1); /* Scale to normal size */
+        }
+
+        .modal-close-btn {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            background: none;
+            border: none;
+            font-size: 24px; /* Adjust size */
+            font-weight: bold;
+            color: var(--yellow);
+            cursor: pointer;
+            padding: 5px;
+            line-height: 1;
+            transition: transform 0.2s ease;
+        }
+        .modal-close-btn:hover {
+            transform: scale(1.1);
+        }
+
+        .modal-disclaimer {
+            font-size: 1em;
+            margin-bottom: 25px;
+            text-align: center;
+            color: var(--light-blue);
+        }
+
+        /* Modal Buttons specific styles */
+        .modal-button-container {
+            display: flex;
+            flex-direction: column; /* Stack buttons vertically */
+            width: 100%; /* Make container take full width */
+            align-items: center; /* Center buttons */
+        }
+
+        .modal-button {
+            /* Inherit general .button styles */
+            width: 80%; /* Make buttons wider inside modal */
+            max-width: 250px; /* Limit max width */
+            padding: 12px 25px; /* Slightly smaller padding */
+            font-size: 1.1em; /* Slightly smaller font */
+        }
+
+        /* Style for the 'Go Back' button */
+        .modal-button-back {
+            background-color: var(--light-blue);
+            color: var(--dark-blue);
+            margin-bottom: 10px; /* Space between modal buttons */
+        }
+        .modal-button-back:hover,
+        .modal-button-back:focus {
+            background-color: #a8cde0;
+        }
+
+        /* Style for the 'Continue' button (is an <a> styled as button) */
+        .modal-button-continue {
+            /* Inherits .button and .modal-button styles */
+        }
+
 
         /* --- Footer --- */
         footer {
@@ -219,7 +345,7 @@
             h1 { font-size: 2.2em; }
             .tagline { font-size: 1.2em; }
             .description { font-size: 1em; }
-            .download-button { padding: 12px 30px; font-size: 1.1em; }
+            .button { padding: 12px 30px; font-size: 1.1em; } /* Adjust main buttons */
 
             /* --- Flex Layout for Vertical View --- */
             footer {
@@ -243,6 +369,10 @@
             .footer-item:last-child {
                 margin-bottom: 0; /* Remove margin from last item */
             }
+
+            .modal-container {
+                width: 90%; /* Adjust modal width for smaller screens */
+            }
         }
 
         /* Smaller screen text adjustments */
@@ -251,6 +381,12 @@
             .tagline { font-size: 1.1em; }
             .footer-item a { font-size: 0.8em; }
             :root { --footer-side-padding: 15px; } /* Reduce side padding on very small screens */
+            .button { padding: 10px 25px; font-size: 1em; } /* Further adjust buttons */
+            .modal-container {
+                padding: 35px 20px 25px 20px; /* Adjust modal padding */
+            }
+            .modal-disclaimer { font-size: 0.9em; }
+            .modal-button { width: 90%; font-size: 1em; }
         }
     </style>
 </head>
@@ -271,7 +407,11 @@
         <p class="description">
             Tired of repetitive clicks? HighlightIT simplifies Microsoft Word Online by letting you highlight text with a keyboard shortcut. It's built for Safari and works seamlessly, just press &#8984+Shift+L and your selected text will become highlighted. Streamline your workflow and save time!
         </p>
-        <a href="HighlightIT.pkg" class="download-button" download="HighlightIT.pkg">Download for Safari</a>
+        <div class="main-button-container">
+            <a href="https://linxer.net/highlightitapp" class="button" target="_blank" rel="noopener noreferrer">Open in App Store</a>
+
+            <button type="button" id="directDownloadBtn" class="button button-direct-download">Download Directly</button>
+        </div>
     </main>
 </div>
 
@@ -287,21 +427,103 @@
     </div>
 </footer>
 
+<div class="modal-backdrop" id="modalBackdrop"></div>
+<div class="modal-container" id="disclaimerModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <button class="modal-close-btn" id="modalCloseBtn" aria-label="Close modal">&times;</button>
+    <p class="modal-disclaimer">
+        Feel free to directly download HighlightIT, but note that this version will not receive updates automatically. To update this version of HighlightIT you will have to redownload it from this page.
+    </p>
+    <div class="modal-button-container">
+        <button type="button" class="button modal-button modal-button-back" id="modalGoBackBtn">Go Back</button>
+        <a href="HighlightIT.pkg" class="button modal-button modal-button-continue" download="HighlightIT.pkg" id="modalContinueBtn">Continue</a>
+    </div>
+</div>
+
 <script>
-    // Simple script for the loading animation
+    // --- Loader Script ---
     window.addEventListener('load', () => {
         const loader = document.getElementById('loader');
         const mainContent = document.getElementById('main-content');
 
+        // Start fade out animation for loader
         loader.classList.add('hidden');
+        // Start fade in animation for content
         mainContent.classList.add('visible');
 
-        loader.addEventListener('transitionend', () => {
-            if (loader && loader.parentNode) {
+        // Optional: Remove loader from DOM after transition
+        loader.addEventListener('transitionend', (event) => {
+            // Make sure the transition is for opacity
+            if (event.propertyName === 'opacity' && loader && loader.parentNode) {
                 loader.parentNode.removeChild(loader);
             }
-        });
+        }, { once: true }); // Ensure listener runs only once
     });
+
+    // --- Modal Script ---
+    const directDownloadBtn = document.getElementById('directDownloadBtn');
+    const modalBackdrop = document.getElementById('modalBackdrop');
+    const disclaimerModal = document.getElementById('disclaimerModal');
+    const modalCloseBtn = document.getElementById('modalCloseBtn');
+    const modalGoBackBtn = document.getElementById('modalGoBackBtn');
+    // const modalContinueBtn = document.getElementById('modalContinueBtn'); // Only needed if extra JS action required
+
+    function openModal() {
+        modalBackdrop.classList.add('visible');
+        disclaimerModal.classList.add('visible');
+        // Optional: Focus the first focusable element in the modal for accessibility
+        modalGoBackBtn.focus();
+    }
+
+    function closeModal() {
+        modalBackdrop.classList.remove('visible');
+        disclaimerModal.classList.remove('visible');
+        // Return focus to the button that opened the modal
+        if (directDownloadBtn) {
+            directDownloadBtn.focus();
+        }
+    }
+
+    // Event Listeners
+    if (directDownloadBtn) {
+        directDownloadBtn.addEventListener('click', openModal);
+    }
+
+    if (modalCloseBtn) {
+        modalCloseBtn.addEventListener('click', closeModal);
+    }
+
+    if (modalGoBackBtn) {
+        modalGoBackBtn.addEventListener('click', closeModal);
+    }
+
+    // Close modal if backdrop is clicked
+    if (modalBackdrop) {
+        modalBackdrop.addEventListener('click', (event) => {
+            // Only close if the backdrop itself was clicked, not the modal content
+            if (event.target === modalBackdrop) {
+                closeModal();
+            }
+        });
+    }
+
+    // Close modal with Escape key
+    document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && disclaimerModal.classList.contains('visible')) {
+            closeModal();
+        }
+    });
+
+    // Optional: If you want the modal to close *after* clicking 'Continue'
+    // const modalContinueBtn = document.getElementById('modalContinueBtn');
+    // if (modalContinueBtn) {
+    //     modalContinueBtn.addEventListener('click', () => {
+    //         // Small delay to allow download to initiate before closing visually
+    //         setTimeout(closeModal, 150);
+    //     });
+    // }
+    // Note: The 'Continue' button is an <a> tag with download, so it works without extra JS.
+    // Adding the above listener would close the modal visually after clicking.
+
 </script>
 
 </body>
