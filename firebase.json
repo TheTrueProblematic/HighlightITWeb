@@ -27,8 +27,9 @@
         "destination": "/privacy.html"
       },
       {
-        "source": "/old-page",
-        "destination": "/index.html"
+        "source": "/index.html",
+        "destination": "/",
+        "type": 302
       }
     ]
   }
