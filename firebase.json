@@ -6,7 +6,6 @@
       "**/.*",
       "**/node_modules/**"
     ],
-
     "headers": [
       {
         "source": "**/*.pkg",
@@ -20,6 +19,16 @@
             "value": "attachment; filename=\"HighlightIT.pkg\""
           }
         ]
+      }
+    ],
+    "rewrites": [
+      {
+        "source": "/privacy",
+        "destination": "/privacy.html"
+      },
+      {
+        "source": "/old-page",
+        "destination": "/index.html"
       }
     ]
   }
