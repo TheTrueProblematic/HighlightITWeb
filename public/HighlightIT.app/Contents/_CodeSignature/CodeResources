@@ -10,7 +10,7 @@
 		</data>
 		<key>Resources/Assets.car</key>
 		<data>
-		KXjwhV17nbFvO/8zdZ35epwfuFQ=
+		0GtLddkgPxuLSRDv1pt/QYzMDN8=
 		</data>
 		<key>Resources/Base.lproj/Main.html</key>
 		<data>
@@ -18,15 +18,15 @@
 		</data>
 		<key>Resources/Base.lproj/Main.storyboardc/Info.plist</key>
 		<data>
-		qUSeg1q51Mu2dtUKrMXdxOQj7Ew=
+		cQAfR2ahaIKyTkOdTM3HQ946wXs=
 		</data>
 		<key>Resources/Base.lproj/Main.storyboardc/MainMenu.nib</key>
 		<data>
-		u9dj+mO/zsfkzFctajYcTK6lNnk=
+		hhTylnPBn/mkbdYX1daGgWeJoxw=
 		</data>
 		<key>Resources/Base.lproj/Main.storyboardc/NSWindowController-B8D-0N-5wS.nib</key>
 		<data>
-		ooCfgT9kt/VOQgykqKsup9GmLqg=
+		TZwQXVQ/K6M7cEv1+8hcqufpzZE=
 		</data>
 		<key>Resources/Base.lproj/Main.storyboardc/XfG-lQ-9wD-view-m2S-Jp-Qdl.nib</key>
 		<data>
@@ -200,11 +200,11 @@
 			<key>requirement</key>
 			<string>anchor apple generic and identifier "com.apple.dt.runtime.swiftsimd" and (certificate leaf[field.1.2.840.113635.100.6.1.9] /* exists */ or certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = "7KA6DXV8BU")</string>
 		</dict>
-		<key>PlugIns/HightlighIT Extension.appex</key>
+		<key>PlugIns/HighlightIT Extension.appex</key>
 		<dict>
 			<key>cdhash</key>
 			<data>
-			haqgknQf+KXPj1dR4hwg+BP3jkU=
+			KKfeuRYOu9FOd+RL9HWyeg+nRE8=
 			</data>
 			<key>requirement</key>
 			<string>anchor apple generic and identifier "com.specterSystems.HightlighIT.extension" and (certificate leaf[field.1.2.840.113635.100.6.1.9] /* exists */ or certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = "7KA6DXV8BU")</string>
@@ -220,7 +220,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			2G11VsGgyn7riJ32qKi5z9noKpjwe1fKb+jho3Zts68=
+			nNTUZT5hknKTm4D3q8yv3m+CVbC1QC/IGcGCqSDt3qQ=
 			</data>
 		</dict>
 		<key>Resources/Base.lproj/Main.html</key>
@@ -234,21 +234,21 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			ylGAtiQDGffaOVeSoUsGKOcJOGyjOCxj+n0rA1C3u6Y=
+			kRA8GBV0tbQsIzh6huaCErFOrhoHf7vx1Cv0kDFAj8E=
 			</data>
 		</dict>
 		<key>Resources/Base.lproj/Main.storyboardc/MainMenu.nib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			VODihAIzALyE72/ILQzL5yqEpduPDKwG0Eoix1JySA4=
+			MViBF51Dc6glvjzFKtvTbADsPpDBQXExPr0/sjocZ5Y=
 			</data>
 		</dict>
 		<key>Resources/Base.lproj/Main.storyboardc/NSWindowController-B8D-0N-5wS.nib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			vOyoXsgDWaLJxjGqYHh9FI1YjhZipwq0NSVWZotZ7dM=
+			TG1y4h7V1az3LuM30x743dRoHE0fluTTj/y5JViMDZ8=
 			</data>
 		</dict>
 		<key>Resources/Base.lproj/Main.storyboardc/XfG-lQ-9wD-view-m2S-Jp-Qdl.nib</key>
